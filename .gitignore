@@ -14,3 +14,17 @@ gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
+
+project.properties
+
+
+# IntlliJ files
+.idea/
+*.iml
+*.eml
+out/
+
+# Eclipse files
+.classpath
+.project
+*.userlibraries
