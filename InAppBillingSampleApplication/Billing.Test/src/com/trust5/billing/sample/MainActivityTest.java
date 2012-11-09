@@ -1,18 +1,40 @@
 package com.trust5.billing.sample;
 
-import android.test.ActivityInstrumentationTestCase2;
+import android.content.Context;
+import android.content.Intent;
+import android.test.ActivityUnitTestCase;
+import android.test.suitebuilder.annotation.SmallTest;
 
 /**
- * This is a simple framework for a test of an Application.  See {@link android.test.ApplicationTestCase
- * ApplicationTestCase} for more information on how to write and extend Application tests.
- * <p/>
- * To run this test, you can type: adb shell am instrument -w \ -e class com.trust5.billing.sample.MainActivityTest \
- * com.trust5.billing.sample.tests/android.test.InstrumentationTestRunner
+ *
  */
-public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
+
+	Intent mTestIntent;
+	Context mTestContext;
 
 	public MainActivityTest() {
-		super("com.trust5.billing.sample", MainActivity.class);
+		super(MainActivity.class);
+	}
+
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+		mTestContext = getInstrumentation().getTargetContext();
+		mTestIntent = new Intent(mTestContext,
+				MainActivity.class);
+
+	}
+
+	@Override
+	protected void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	@SmallTest
+	public void testSetup() {
+		assertNotNull(mTestContext);
+		assertNotNull(mTestIntent);
 	}
 
 }
